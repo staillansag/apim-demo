@@ -1,0 +1,154 @@
+---
+swagger: "2.0"
+info:
+  description: "This service allows the management of party information."
+  version: "1.0"
+  title: "Insurance_party-management"
+host: "localhost:5555"
+basePath: "/party-management"
+schemes:
+- "http"
+- "https"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /parties:
+    get:
+      operationId: "listParties"
+      parameters:
+      - name: "name"
+        in: "query"
+        type: "string"
+        description: filter parties on their name
+      - name: "type"
+        in: "query"
+        type: "string"
+        description: filter parties on their type
+      - name: "status"
+        in: "query"
+        type: "string"
+        description: filter parties on their status
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/ListPartyResponse"
+        "400":
+          description: "Invalid Request"
+        "401":
+          description: "Access Denied"
+  /parties/{id}:
+    get:
+      operationId: "getParty"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+        description: party identifier
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/GetPartyResponse"
+        "400":
+          description: "Invalid Request"
+        "404":
+          description: "Not Found"
+        "401":
+          description: "Access Denied"
+definitions:
+  ListPartyResponse:
+    required:
+    - "parties"
+    properties:
+      parties:
+        type: "array"
+        items:
+          $ref: "#/definitions/Party"
+  GetPartyResponse:
+    required:
+    - "party"
+    properties:
+      party:
+        $ref: "#/definitions/Party"
+  Party:
+    required:
+    - "address"
+    - "contactInformation"
+    - "id"
+    - "name"
+    - "status"
+    - "type"
+    properties:
+      id:
+        type: "string"
+        description: The party identifier
+        example: 1
+      type:
+        type: "string"
+        description: The party type
+        enum:
+        - person
+        - company
+        example: person
+      name:
+        type: "string"
+        description: last name for a person, company name for a company
+        example: Smith
+      givenName:
+        type: "string"
+        description: given name of a person, not used for a company
+        example: John
+      status:
+        type: "string"
+        description: status of the party
+        enum:
+        - active
+        - inactive
+        example: active
+      address:
+        $ref: "#/definitions/Address"
+      contactInformation:
+        $ref: "#/definitions/ContactInformation"
+  ContactInformation:
+    required:
+    - "emailAddress"
+    properties:
+      phoneNumber:
+        type: "string"
+        description: The phone number
+        example: +33 1 23456789
+      emailAddress:
+        type: "string"
+        description: The email address
+        example: john.smith@domain.com
+  Address:
+    required:
+    - "country"
+    - "locality"
+    - "postCode"
+    - "streetName"
+    properties:
+      streetNumber:
+        type: "string"
+        description: the street number
+        example: 12
+      streetName:
+        type: "string"
+        description: the street name
+        example: Avenue Foch
+      postCode:
+        type: "string"
+        description: the post code
+        example: 75008
+      locality:
+        type: "string"
+        description: the locality (town / city)
+        example: Paris
+      country:
+        type: "string"
+        description: the ISO country code
+        example: FR
