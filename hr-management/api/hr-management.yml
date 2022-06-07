@@ -1,0 +1,243 @@
+openapi: 3.0.1
+info:
+  title: HR-management
+  description: This API allows the management of HR information.
+  version: '1.0'
+paths:
+  /employees:
+    get:
+      operationId: listEmployees
+      parameters:
+        - name: name
+          in: query
+          description: Use to restrict results to employees matching a given name
+          schema:
+            type: string
+        - name: hireDateFrom
+          in: query
+          description: Use to restrict results to employees hired after or at a certain date
+          schema:
+            type: string
+        - name: hireDateTo
+          in: query
+          description: Use to restrict results to employees hired before or at a certain date
+          schema:
+            type: string
+        - name: offset
+          in: query
+          description: Use for pagination.
+          required: false
+          allowEmptyValue: false
+          schema:
+            type: string
+            description: Use for pagination.
+            readOnly: false
+            default: '0'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Employee'
+        '400':
+          description: InvalidRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Access Denied
+        '500':
+          description: Server Error
+    post:
+      operationId: createEmployees
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+      responses:
+        '201':
+          description: Inserted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+        '400':
+          description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Access Denied
+        '500':
+          description: Server Error
+  /employees/{employeeId}:
+    get:
+      operationId: getEmployee
+      parameters:
+        - name: employeeId
+          in: path
+          required: true
+          description: The employee ID
+          schema:
+            type: string  
+      responses:
+        '200':
+          description: Employee retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+        '400':
+          description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Access Denied
+        '404':
+          description: Not Found
+        '500':
+          description: Server Error
+    put:
+      operationId: updateEmployee
+      parameters:
+        - name: employeeId
+          in: path
+          required: true
+          description: The employee ID
+          schema:
+            type: string  
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+      responses:
+        '200':
+          description: Employee updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+        '400':
+          description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Access Denied
+        '404':
+          description: Not Found
+        '500':
+          description: Server Error
+    delete:
+      operationId: deleteEmployee
+      parameters:
+        - name: employeeId
+          in: path
+          required: true
+          description: The employee ID
+          schema:
+            type: string  
+      responses:
+        '204':
+          description: Employee deleted
+        '400':
+          description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Access Denied
+        '404':
+          description: Not Found
+        '500':
+          description: Server Error
+components:
+  schemas:
+    Employee:
+      type: object
+      required:
+      - "givenName"
+      - "surName"
+      - "birthDate"
+      - "gender"
+      - "hireDate"
+      - "service"
+      - "office"
+      - "manager"
+      properties:
+        id:
+          type: string
+          description: The employee ID
+          example: 1032
+        givenName:
+          type: string
+          description: The employee given name (first name)
+          example: John
+        surName:
+          type: string
+          description: The employee surname (last name)
+          example: Smith
+        birthDate:
+          type: string
+          description: The employee date of birth
+          format: date
+          example: '1983-02-23'
+        gender:
+          type: string
+          description: The employee gender
+          example: 'male'
+          enum:
+          - male
+          - female
+          - other
+        hireDate:
+          type: string
+          description: The employee hire date
+          format: date
+          example: '2022-05-01'
+        service:
+          type: string
+          description: The name of the service of the employee
+          example: 'IT'
+        office:
+          type: string
+          description: The name of the office where the employee is located
+          example: Paris La Défense
+        manager:
+          $ref: "#/components/schemas/EmployeeManager"
+    EmployeeManager:
+      type: object
+      required:
+      - "givenName"
+      - "surName"
+      - "employeeId"
+      properties:
+        givenName:
+          type: string
+          description: The manager given name (first name)
+          example: Linda
+        surName:
+          type: string
+          description: The manager surname (last name)
+          example: Wellington
+        employeeId:
+          type: string
+          description: The employee ID of the manager
+          example: 102
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The error message
