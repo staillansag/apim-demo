@@ -1,0 +1,193 @@
+---
+swagger: "2.0"
+info:
+  version: "1.0"
+  title: "Insurance_contract-management"
+  description: This service allows the management of contract information.
+host: "localhost:5555"
+basePath: "/contract-management"
+schemes:
+- "http"
+- "https"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /contracts:
+    get:
+      tags:
+      - Contract
+      operationId: "listContracts"
+      description: This method allows the listing and filtering of contracts
+      parameters:
+      - name: "insuredId"
+        in: "query"
+        type: "string"
+        description: filter contracts on the insured ID
+      - name: "status"
+        in: "query"
+        type: "string"
+        description: filter contracts on the status
+      - name: "product"
+        in: "query"
+        type: "string"
+        description: filter contracts on the product
+      - name: "creationDateFrom"
+        in: "query"
+        type: "string"
+        description: filter contracts on the creation date & time. If populated in the request, only contracts created at this date or after will be returned.
+      - name: "creationDateTo"
+        in: "query"
+        type: "string"
+        description: filter contracts on the creation date & time. If populated in the request, only contracts created at this date or before will be returned.
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/ListContractResponse"
+        "400":
+          description: "Invalid Request"
+        "401":
+          description: "Access Denied"
+  /contracts/{id}:
+    get:
+      tags:
+      - Contract
+      operationId: "getContract"
+      description: This method allows the retrieval of a contract using its identifier
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+        description: the contract identifier
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/GetContractResponse"
+        "400":
+          description: "Invalid Request"
+        "404":
+          description: "Not Found"
+        "401":
+          description: "Access Denied"
+definitions:
+  GetContractResponse:
+    required:
+    - "contract"
+    properties:
+      contract:
+        $ref: "#/definitions/Contract"
+  ListContractResponse:
+    required:
+    - "contracts"
+    properties:
+      contracts:
+        type: "array"
+        items:
+          $ref: "#/definitions/Contract"
+  Party:
+    required:
+    - "id"
+    properties:
+      id:
+        type: "string"
+        description: The party identifier
+        example: 1
+      type:
+        type: "string"
+        description: The party type
+        enum:
+        - person
+        - company
+        example: person
+      name:
+        type: "string"
+        description: last name for a person, company name for a company
+        example: Smith
+      givenName:
+        type: "string"
+        description: given name of a person, not used for a company
+        example: John
+      status:
+        type: "string"
+        description: status of the party
+        enum:
+        - active
+        - inactive
+        example: active
+      address:
+        $ref: "#/definitions/Address"
+      contactInformation:
+        $ref: "#/definitions/ContactInformation"
+  Address:
+    required:
+    - "country"
+    - "locality"
+    - "postCode"
+    - "streetName"
+    properties:
+      streetNumber:
+        type: "string"
+        description: the street number
+        example: 12
+      streetName:
+        type: "string"
+        description: the street name
+        example: Avenue Foch
+      postCode:
+        type: "string"
+        description: the post code
+        example: 75008
+      locality:
+        type: "string"
+        description: the locality (town / city)
+        example: Paris
+      country:
+        type: "string"
+        description: the ISO country code
+        example: FR
+  Contract:
+    required:
+    - "creationDateTime"
+    - "id"
+    - "insured"
+    - "product"
+    - "status"
+    properties:
+      id:
+        type: "string"
+        description: The contract identifier
+        example: C1
+      creationDateTime:
+        type: "string"
+        description: The contract creation date and time
+        format: date-time
+        example: "2022-05-20T12:23:15.387Z"
+      product:
+        type: "string"
+        description: the product associated to the contract
+        example: casco
+      insured:
+        $ref: "#/definitions/Party"
+      status:
+        type: "string"
+        description: the contract status
+        enum:
+        - active
+        - terminated
+        example: active
+  ContactInformation:
+    required:
+    - "emailAddress"
+    properties:
+      phoneNumber:
+        type: "string"
+        description: The phone number
+        example: +33 1 23456789
+      emailAddress:
+        type: "string"
+        description: The email address
+        example: john.smith@domain.com
