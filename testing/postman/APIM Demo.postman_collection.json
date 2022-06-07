@@ -1,0 +1,1605 @@
+{
+	"info": {
+		"_postman_id": "dc3dfbef-60bb-4aa8-9870-6dd9f1e2f182",
+		"name": "APIM Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Parties via API GW",
+			"item": [
+				{
+					"name": "Get parties NOAUTH",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{party_url}}/parties",
+							"host": [
+								"{{party_url}}"
+							],
+							"path": [
+								"parties"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get parties TRIAL",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "x-gateway-apikey",
+								"value": "3e98b2e2-ba93-4fd1-8610-f07b7ba0af29",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{party_url}}/parties",
+							"host": [
+								"{{party_url}}"
+							],
+							"path": [
+								"parties"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get parties PROD",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "x-gateway-apikey",
+								"value": "3fc89198-f45b-4cfc-bc29-d442a91d9551",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{party_url}}/parties",
+							"host": [
+								"{{party_url}}"
+							],
+							"path": [
+								"parties"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get party 1 NOAUTH",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{party_url}}/parties/1",
+							"host": [
+								"{{party_url}}"
+							],
+							"path": [
+								"parties",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get party 1 TRIAL (OK)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "x-gateway-apikey",
+								"value": "3e98b2e2-ba93-4fd1-8610-f07b7ba0af29",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{party_url}}/parties/1",
+							"host": [
+								"{{party_url}}"
+							],
+							"path": [
+								"parties",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get party 1 PROD (OK)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "x-gateway-apikey",
+								"value": "3fc89198-f45b-4cfc-bc29-d442a91d9551",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{party_url}}/parties/1",
+							"host": [
+								"{{party_url}}"
+							],
+							"path": [
+								"parties",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get party 2 TRIAL (delay)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "x-gateway-apikey",
+								"value": "3e98b2e2-ba93-4fd1-8610-f07b7ba0af29",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{party_url}}/parties/2",
+							"host": [
+								"{{party_url}}"
+							],
+							"path": [
+								"parties",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get party 2 PROD (delay)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "x-gateway-apikey",
+								"value": "3fc89198-f45b-4cfc-bc29-d442a91d9551",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{party_url}}/parties/2",
+							"host": [
+								"{{party_url}}"
+							],
+							"path": [
+								"parties",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get party 3 TRIAL (invalid response)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "x-gateway-apikey",
+								"value": "3e98b2e2-ba93-4fd1-8610-f07b7ba0af29",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{party_url}}/parties/3",
+							"host": [
+								"{{party_url}}"
+							],
+							"path": [
+								"parties",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get party 3 PROD (invalid response)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "x-gateway-apikey",
+								"value": "3fc89198-f45b-4cfc-bc29-d442a91d9551",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{party_url}}/parties/3",
+							"host": [
+								"{{party_url}}"
+							],
+							"path": [
+								"parties",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get party 4 TRIAL (forced error)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "x-gateway-apikey",
+								"value": "3e98b2e2-ba93-4fd1-8610-f07b7ba0af29",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{party_url}}/parties/4",
+							"host": [
+								"{{party_url}}"
+							],
+							"path": [
+								"parties",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get party 4 PROD (forced error)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "x-gateway-apikey",
+								"value": "3fc89198-f45b-4cfc-bc29-d442a91d9551",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{party_url}}/parties/4",
+							"host": [
+								"{{party_url}}"
+							],
+							"path": [
+								"parties",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contracts via API GW",
+			"item": [
+				{
+					"name": "Get contracts NOAUTH",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Administrator",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{contract_url}}/contracts",
+							"host": [
+								"{{contract_url}}"
+							],
+							"path": [
+								"contracts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get contracts PROD (OK) Copy",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Administrator",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "x-gateway-apikey",
+								"value": "{{insurance_prod_apikey}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{contract_url}}/contracts",
+							"host": [
+								"{{contract_url}}"
+							],
+							"path": [
+								"contracts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get contract C1 TRIAL (OK)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Administrator",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "x-gateway-apikey",
+								"value": "{{insurance_trial_apikey}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{contract_url}}/contracts/C1",
+							"host": [
+								"{{contract_url}}"
+							],
+							"path": [
+								"contracts",
+								"C1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get contract C2 TRIAL (delay)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Administrator",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "x-gateway-apikey",
+								"value": "{{insurance_trial_apikey}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{contract_url}}/contracts/C2",
+							"host": [
+								"{{contract_url}}"
+							],
+							"path": [
+								"contracts",
+								"C2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get contract C3 TRIAL (invalid response)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Administrator",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "x-gateway-apikey",
+								"value": "{{insurance_trial_apikey}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{contract_url}}/contracts/C3",
+							"host": [
+								"{{contract_url}}"
+							],
+							"path": [
+								"contracts",
+								"C3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get contract C4 TRIAL (error)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Administrator",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "x-gateway-apikey",
+								"value": "{{insurance_trial_apikey}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{contract_url}}/contracts/C4",
+							"host": [
+								"{{contract_url}}"
+							],
+							"path": [
+								"contracts",
+								"C4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Claims via API GW (Mock)",
+			"item": [
+				{
+					"name": "Post claim",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"claim\": {\r\n    \"creationDateTime\": \"2022-05-26T12:23:15.387Z\",\r\n    \"status\": \"created\",\r\n    \"insured\": {\r\n      \"id\": \"1\",\r\n      \"type\": \"person\",\r\n      \"name\": \"Smith\",\r\n      \"givenName\": \"John\",\r\n      \"status\": \"active\",\r\n      \"address\": {\r\n        \"streetNumber\": \"12\",\r\n        \"streetName\": \"Avenue Foch\",\r\n        \"postCode\": \"75008\",\r\n        \"locality\": \"Paris\",\r\n        \"country\": \"FR\"\r\n      },\r\n      \"contactInformation\": {\r\n        \"phoneNumber\": \"+33 1 23456789\",\r\n        \"emailAddress\": \"john.smith@domain.com\"\r\n      }\r\n    },\r\n    \"lossDate\": \"2022-05-20\",\r\n    \"lossAmount\": 13800,\r\n    \"currency\": \"EUR\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{claim_url}}/claims",
+							"host": [
+								"{{claim_url}}"
+							],
+							"path": [
+								"claims"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get claims",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{claim_url}}/claims",
+							"host": [
+								"{{claim_url}}"
+							],
+							"path": [
+								"claims"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get claim",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{claim_url}}/claims/CF2",
+							"host": [
+								"{{claim_url}}"
+							],
+							"path": [
+								"claims",
+								"CF2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put claim",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"claim\": {\r\n        \"id\": \"CF1\",\r\n        \"creationDateTime\": \"2022-05-20T12:23:15.387Z\",\r\n        \"status\": \"created\",\r\n        \"insured\": {\r\n            \"id\": \"1\",\r\n            \"type\": \"person\",\r\n            \"name\": \"Smith\",\r\n            \"givenName\": \"John\",\r\n            \"status\": \"active\",\r\n            \"address\": {\r\n                \"streetNumber\": \"12\",\r\n                \"streetName\": \"Avenue Foch\",\r\n                \"postCode\": \"75008\",\r\n                \"locality\": \"Paris\",\r\n                \"country\": \"FR\"\r\n            },\r\n            \"contactInformation\": {\r\n                \"phoneNumber\": \"+33 1 23456789\",\r\n                \"emailAddress\": \"john.smith@domain.com\"\r\n            }\r\n        },\r\n        \"lossDate\": \"2022-05-20\",\r\n        \"lossAmount\": 13800,\r\n        \"currency\": \"EUR\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{claim_url}}/claims/CF1",
+							"host": [
+								"{{claim_url}}"
+							],
+							"path": [
+								"claims",
+								"CF1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete claim",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"claim\": {\r\n        \"id\": \"CF1\",\r\n        \"creationDateTime\": \"2022-05-20T12:23:15.387Z\",\r\n        \"status\": \"created\",\r\n        \"insured\": {\r\n            \"id\": \"1\",\r\n            \"type\": \"person\",\r\n            \"name\": \"Smith\",\r\n            \"givenName\": \"John\",\r\n            \"status\": \"active\",\r\n            \"address\": {\r\n                \"streetNumber\": \"12\",\r\n                \"streetName\": \"Avenue Foch\",\r\n                \"postCode\": \"75008\",\r\n                \"locality\": \"Paris\",\r\n                \"country\": \"FR\"\r\n            },\r\n            \"contactInformation\": {\r\n                \"phoneNumber\": \"+33 1 23456789\",\r\n                \"emailAddress\": \"john.smith@domain.com\"\r\n            }\r\n        },\r\n        \"lossDate\": \"2022-05-20\",\r\n        \"lossAmount\": 13800,\r\n        \"currency\": \"EUR\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{claim_url}}/claims/CF1",
+							"host": [
+								"{{claim_url}}"
+							],
+							"path": [
+								"claims",
+								"CF1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "apikey",
+				"apikey": [
+					{
+						"key": "key",
+						"value": "x-gateway-apikey",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "HR via API GW",
+			"item": [
+				{
+					"name": "Create employee NOAUTH",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"givenName\": \"Bertie\",\r\n    \"surName\": \"Lanaghan\",\r\n    \"birthDate\": \"1983-02-23\",\r\n    \"gender\": \"male\",\r\n    \"hireDate\": \"2022-05-01\",\r\n    \"service\": \"IT\",\r\n    \"office\": \"Paris La Défense\",\r\n    \"manager\": {\r\n        \"givenName\": \"Linda\",\r\n        \"surName\": \"Wellington\",\r\n        \"employeeId\": \"102\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hr_url}}/employees",
+							"host": [
+								"{{hr_url}}"
+							],
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create employee Test",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "x-gateway-apikey",
+								"value": "{{hr_test_apikey}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"givenName\": \"Johnny\",\r\n    \"surName\": \"Failure\",\r\n    \"birthDate\": \"1983-02-23\",\r\n    \"gender\": \"male\",\r\n    \"hireDate\": \"2022-05-01\",\r\n    \"service\": \"IT\",\r\n    \"office\": \"Paris La Défense\",\r\n    \"manager\": {\r\n        \"givenName\": \"Linda\",\r\n        \"surName\": \"Wellington\",\r\n        \"employeeId\": \"102\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hr_url}}/employees",
+							"host": [
+								"{{hr_url}}"
+							],
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create employee Trial",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "x-gateway-apikey",
+								"value": "{{hr_trial_apikey}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"givenName\": \"Laura\",\r\n    \"surName\": \"Gardner\",\r\n    \"birthDate\": \"1983-02-23\",\r\n    \"gender\": \"male\",\r\n    \"hireDate\": \"2022-05-01\",\r\n    \"service\": \"IT\",\r\n    \"office\": \"Paris La Défense\",\r\n    \"manager\": {\r\n        \"givenName\": \"Linda\",\r\n        \"surName\": \"Wellington\",\r\n        \"employeeId\": \"102\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hr_url}}/employees",
+							"host": [
+								"{{hr_url}}"
+							],
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get employee NOAUTH",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hr_url}}/employees/:employeeId",
+							"host": [
+								"{{hr_url}}"
+							],
+							"path": [
+								"employees",
+								":employeeId"
+							],
+							"variable": [
+								{
+									"key": "employeeId",
+									"value": "66e7aa88-fd9a-4bbd-bd1c-c1a250e70104"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get employee #1 Test (OK)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-gateway-apikey",
+								"value": "{{hr_test_apikey}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{hr_url}}/employees/:employeeId",
+							"host": [
+								"{{hr_url}}"
+							],
+							"path": [
+								"employees",
+								":employeeId"
+							],
+							"variable": [
+								{
+									"key": "employeeId",
+									"value": "66e7aa88-fd9a-4bbd-bd1c-c1a250e70104"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get employee #1 Trial (OK)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-gateway-apikey",
+								"value": "{{hr_trial_apikey}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{hr_url}}/employees/:employeeId",
+							"host": [
+								"{{hr_url}}"
+							],
+							"path": [
+								"employees",
+								":employeeId"
+							],
+							"variable": [
+								{
+									"key": "employeeId",
+									"value": "66e7aa88-fd9a-4bbd-bd1c-c1a250e70104"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get employee #2 Test (Delay)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-gateway-apikey",
+								"value": "{{hr_test_apikey}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{hr_url}}/employees/:employeeId",
+							"host": [
+								"{{hr_url}}"
+							],
+							"path": [
+								"employees",
+								":employeeId"
+							],
+							"variable": [
+								{
+									"key": "employeeId",
+									"value": "3447dd73-95f9-4d97-9258-e08c01464eac"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get employee #2 Trial (Delay)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-gateway-apikey",
+								"value": "{{hr_trial_apikey}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{hr_url}}/employees/:employeeId",
+							"host": [
+								"{{hr_url}}"
+							],
+							"path": [
+								"employees",
+								":employeeId"
+							],
+							"variable": [
+								{
+									"key": "employeeId",
+									"value": "3447dd73-95f9-4d97-9258-e08c01464eac"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get employee #3 Test (Error)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-gateway-apikey",
+								"value": "{{hr_test_apikey}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{hr_url}}/employees/:employeeId",
+							"host": [
+								"{{hr_url}}"
+							],
+							"path": [
+								"employees",
+								":employeeId"
+							],
+							"variable": [
+								{
+									"key": "employeeId",
+									"value": "c93c80b6-2856-4e4a-93e4-142f1f449023"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get employee #3 Trial (Error)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-gateway-apikey",
+								"value": "{{hr_trial_apikey}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{hr_url}}/employees/:employeeId",
+							"host": [
+								"{{hr_url}}"
+							],
+							"path": [
+								"employees",
+								":employeeId"
+							],
+							"variable": [
+								{
+									"key": "employeeId",
+									"value": "c93c80b6-2856-4e4a-93e4-142f1f449023"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Direct calls",
+			"item": [
+				{
+					"name": "Parties Direct",
+					"item": [
+						{
+							"name": "Get parties",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "manage",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Administrator",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{party_url}}/parties",
+									"host": [
+										"{{party_url}}"
+									],
+									"path": [
+										"parties"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get party 1 (OK)",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "manage",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Administrator",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{party_url}}/parties/1",
+									"host": [
+										"{{party_url}}"
+									],
+									"path": [
+										"parties",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get party 2 (delay)",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "manage",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Administrator",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{party_url}}/parties/2",
+									"host": [
+										"{{party_url}}"
+									],
+									"path": [
+										"parties",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get party 3 (invalid response)",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "manage",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Administrator",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{party_url}}/parties/3",
+									"host": [
+										"{{party_url}}"
+									],
+									"path": [
+										"parties",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get party 4 (forced error)",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "manage",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Administrator",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{party_url}}/parties/4",
+									"host": [
+										"{{party_url}}"
+									],
+									"path": [
+										"parties",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "HR Direct",
+					"item": [
+						{
+							"name": "Create employee",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "content-type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"givenName\": \"Bertie\",\r\n    \"surName\": \"Lanaghan\",\r\n    \"birthDate\": \"1983-02-23\",\r\n    \"gender\": \"male\",\r\n    \"hireDate\": \"2022-05-01\",\r\n    \"service\": \"IT\",\r\n    \"office\": \"Paris La Défense\",\r\n    \"manager\": {\r\n        \"givenName\": \"Linda\",\r\n        \"surName\": \"Wellington\",\r\n        \"employeeId\": \"102\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hr_url}}/employees",
+									"host": [
+										"{{hr_url}}"
+									],
+									"path": [
+										"employees"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get employee",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{hr_url}}/employees/:employeeId",
+									"host": [
+										"{{hr_url}}"
+									],
+									"path": [
+										"employees",
+										":employeeId"
+									],
+									"variable": [
+										{
+											"key": "employeeId",
+											"value": "66e7aa88-fd9a-4bbd-bd1c-c1a250e70104"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "basic",
+						"basic": [
+							{
+								"key": "password",
+								"value": "{{io_password}}",
+								"type": "string"
+							},
+							{
+								"key": "username",
+								"value": "{{io_user}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "abb55f5f-a7a9-438c-95e8-379c0bf5f749",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "x-gateway-apikey",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
