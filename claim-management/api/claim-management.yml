@@ -1,0 +1,340 @@
+openapi: 3.0.0
+info:
+  version: "1.0"
+  title: Insurance_claim-management
+  description: This service allows the management of claim information.
+paths:
+  /claims:
+    post:
+      tags:
+        - Claim
+      operationId: createClaim
+      description: This method allows the creation of a claim
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateClaimRequest'
+        description: Claim that needs to be created
+        required: true
+      responses:
+        '200':
+          description: Inserted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateClaimResponse'
+        '400':
+          description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Access Denied
+        '500':
+          description: Server Error
+    get:
+      tags:
+        - Claim
+      operationId: listClaims
+      description: This method allows the listing and filtering of claims
+      parameters:
+        - name: contractId
+          in: query
+          description: filter claims on the contract ID
+          schema:
+            type: string
+        - name: insuredId
+          in: query
+          description: filter claims on the insured ID
+          schema:
+            type: string
+        - name: status
+          in: query
+          description: filter claims on the status
+          schema:
+            type: string
+        - name: creationDateFrom
+          in: query
+          description: >-
+            filter claims on the creation date & time. If populated in the
+            request, only claims created at this date or after will be returned.
+          schema:
+            type: string
+        - name: creationDateTo
+          in: query
+          description: >-
+            filter claims on the creation date & time. If populated in the
+            request, only claims created at this date or before will be
+            returned.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListClaimResponse'
+        '400':
+          description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Access Denied
+  /claims/{id}:
+    get:
+      tags:
+        - Claim
+      operationId: getClaim
+      description: This method allows the retrieval of a claim file using its identifier
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: the claim file identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetClaimResponse'
+        '400':
+          description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Access Denied
+        '404':
+          description: Not Found
+    put:
+      tags:
+        - Claim
+      operationId: updateClaim
+      description: This method allows the modification of a claim
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: the claim file identifier
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateClaimRequest'
+        description: Claim that needs to be updated
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateClaimResponse'
+        '400':
+          description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Access Denied
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - Claim
+      operationId: deleteClaim
+      description: This method allows the deletion of a claim
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: the claim file identifier
+          schema:
+            type: string
+      responses:
+        '204':
+          description: OK
+        '400':
+          description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Access Denied
+        '404':
+          description: Not Found
+servers:
+  - url: https://localhost:5555/claim-management
+components:
+  schemas:
+    GetClaimResponse:
+      required:
+        - claim
+      properties:
+        claim:
+          $ref: '#/components/schemas/Claim'
+    ListClaimResponse:
+      required:
+        - claims
+      properties:
+        claims:
+          type: array
+          items:
+            $ref: '#/components/schemas/Claim'
+    CreateClaimRequest:
+      required:
+        - claim
+      properties:
+        claim:
+          $ref: '#/components/schemas/Claim'
+    CreateClaimResponse:
+      required:
+        - claim
+      properties:
+        claim:
+          $ref: '#/components/schemas/Claim'
+    UpdateClaimRequest:
+      required:
+        - claim
+      properties:
+        claim:
+          $ref: '#/components/schemas/Claim'
+    UpdateClaimResponse:
+      required:
+        - claim
+      properties:
+        claim:
+          $ref: '#/components/schemas/Claim'
+    Claim:
+      required:
+        - creationDateTime
+        - insured
+        - status
+        - lossDate
+        - lossAmount
+        - currency
+      properties:
+        id:
+          type: string
+          description: The claim identifier
+          example: CF1
+        creationDateTime:
+          type: string
+          description: The claim creation date and time
+          format: date-time
+          example: '2022-05-20T12:23:15.387Z'
+        status:
+          type: string
+          description: the claim status
+          enum:
+            - created
+            - being-assessed
+            - settled
+          example: created
+        insured:
+          $ref: '#/components/schemas/Party'
+        lossDate:
+          type: string
+          description: The loss date
+          format: date
+          example: '2022-05-20'
+        lossAmount:
+          type: number
+          description: The loss amount
+          example: 13800
+        currency:
+          type: string
+          description: The currency associated to the loss
+          example: EUR
+    Party:
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          description: The party identifier
+          example: 1
+        type:
+          type: string
+          description: The party type
+          enum:
+            - person
+            - company
+          example: person
+        name:
+          type: string
+          description: last name for a person, company name for a company
+          example: Smith
+        givenName:
+          type: string
+          description: given name of a person, not used for a company
+          example: John
+        status:
+          type: string
+          description: status of the party
+          enum:
+            - active
+            - inactive
+          example: active
+        address:
+          $ref: '#/components/schemas/Address'
+        contactInformation:
+          $ref: '#/components/schemas/ContactInformation'
+    Address:
+      required:
+        - country
+        - locality
+        - postCode
+        - streetName
+      properties:
+        streetNumber:
+          type: string
+          description: the street number
+          example: 12
+        streetName:
+          type: string
+          description: the street name
+          example: Avenue Foch
+        postCode:
+          type: string
+          description: the post code
+          example: 75008
+        locality:
+          type: string
+          description: the locality (town / city)
+          example: Paris
+        country:
+          type: string
+          description: the ISO country code
+          example: FR
+    ContactInformation:
+      required:
+        - emailAddress
+      properties:
+        phoneNumber:
+          type: string
+          description: The phone number
+          example: +33 1 23456789
+        emailAddress:
+          type: string
+          description: The email address
+          example: john.smith@domain.com
+    Error:
+      type: object
+      properties:
+        Exception:
+          type: string
+          description: The error message
