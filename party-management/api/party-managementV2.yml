@@ -1,0 +1,253 @@
+---
+swagger: "2.0"
+info:
+  description: "This service allows the management of party information."
+  version: "2.0"
+  title: "Insurance_party-management"
+host: "localhost:5555"
+basePath: "/party-management"
+schemes:
+- "https"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /parties:
+    post:
+      tags:
+      - Party
+      description: Use this method to create a party.
+      operationId: "createParty"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Party that needs to be created"
+        required: true
+        schema:
+          $ref: "#/definitions/CreatePartyRequest"
+      responses:
+        "201":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/CreatePartyResponse"
+        "400":
+          description: "Invalid Request"
+        "404":
+          description: "Not Found"
+        "401":
+          description: "Access Denied"
+    get:
+      tags:
+      - Party
+      description: Use this method to list and filter parties.
+      operationId: "listParties"
+      parameters:
+      - name: "name"
+        in: "query"
+        type: "string"
+        description: filter parties on their name
+      - name: "type"
+        in: "query"
+        type: "string"
+        description: filter parties on their type
+      - name: "status"
+        in: "query"
+        type: "string"
+        description: filter parties on their status
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/ListPartyResponse"
+        "400":
+          description: "Invalid Request"
+        "401":
+          description: "Access Denied"
+  /parties/{id}:
+    get:
+      tags:
+      - Party
+      description: Use this method to retrieve a party.
+      operationId: "getParty"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+        description: party identifier
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/GetPartyResponse"
+        "400":
+          description: "Invalid Request"
+        "404":
+          description: "Not Found"
+        "401":
+          description: "Access Denied"
+    put:
+      tags:
+      - Party
+      description: Use this method to update a party.
+      operationId: "updateParty"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+        description: party identifier
+      - in: "body"
+        name: "body"
+        description: "Party that needs to be updated"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdatePartyRequest"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/UpdatePartyResponse"
+        "400":
+          description: "Invalid Request"
+        "404":
+          description: "Not Found"
+        "401":
+          description: "Access Denied"
+    delete:
+      tags:
+      - Party
+      description: Use this method to delete a party.
+      operationId: "deleteParty"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+        description: party identifier
+      responses:
+        "204":
+          description: "OK"
+        "400":
+          description: "Invalid Request"
+        "404":
+          description: "Not Found"
+        "401":
+          description: "Access Denied"
+definitions:
+  CreatePartyRequest:
+    required:
+    - "party"
+    properties:
+      party:
+        $ref: "#/definitions/Party"
+  CreatePartyResponse:
+    required:
+    - "party"
+    properties:
+      party:
+        $ref: "#/definitions/Party"
+  ListPartyResponse:
+    required:
+    - "parties"
+    properties:
+      parties:
+        type: "array"
+        items:
+          $ref: "#/definitions/Party"
+  GetPartyResponse:
+    required:
+    - "party"
+    properties:
+      party:
+        $ref: "#/definitions/Party"
+  UpdatePartyRequest:
+    required:
+    - "party"
+    properties:
+      party:
+        $ref: "#/definitions/Party"
+  UpdatePartyResponse:
+    required:
+    - "party"
+    properties:
+      party:
+        $ref: "#/definitions/Party"
+  Party:
+    required:
+    - "address"
+    - "contactInformation"
+    - "name"
+    - "status"
+    - "type"
+    properties:
+      id:
+        type: "string"
+        description: The party identifier
+        example: 1
+      type:
+        type: "string"
+        description: The party type
+        enum:
+        - person
+        - company
+        example: person
+      name:
+        type: "string"
+        description: last name for a person, company name for a company
+        example: Smith
+      givenName:
+        type: "string"
+        description: given name of a person, not used for a company
+        example: John
+      status:
+        type: "string"
+        description: status of the party
+        enum:
+        - active
+        - inactive
+        example: active
+      address:
+        $ref: "#/definitions/Address"
+      contactInformation:
+        $ref: "#/definitions/ContactInformation"
+  ContactInformation:
+    required:
+    - "emailAddress"
+    properties:
+      phoneNumber:
+        type: "string"
+        description: The phone number
+        example: +33 1 23456789
+      emailAddress:
+        type: "string"
+        description: The email address
+        example: john.smith@domain.com
+  Address:
+    required:
+    - "country"
+    - "locality"
+    - "postCode"
+    - "streetName"
+    properties:
+      streetNumber:
+        type: "string"
+        description: the street number
+        example: 12
+      streetName:
+        type: "string"
+        description: the street name
+        example: Avenue Foch
+      postCode:
+        type: "string"
+        description: the post code
+        example: 75008
+      locality:
+        type: "string"
+        description: the locality (town / city)
+        example: Paris
+      country:
+        type: "string"
+        description: the ISO country code
+        example: FR
